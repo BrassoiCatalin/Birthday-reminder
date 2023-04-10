@@ -1,7 +1,12 @@
 <nz-table #basicTable [nzData]="personList">
     <thead>
       <tr>
-        <th>First name</th>
+        <th nzCustomFilter>
+          First name
+          <nz-filter-trigger [(nzVisible)]="visible" [nzActive]="searchValue.length > 0" [nzDropdownMenu]="menu">
+            <span nz-icon nzType="search"></span>
+          </nz-filter-trigger>
+        </th>
         <th>Last name</th>
         <th>Phone</th>
         <th>City</th>
@@ -17,4 +22,14 @@
         <td>{{data.birthDate| date:'longDate'}}</td>
       </tr>
     </tbody>
+    <nz-dropdown-menu #menu="nzDropdownMenu">
+      <div class="ant-table-filter-dropdown">
+        <div class="search-box">
+          <input type="text" nz-input placeholder="Search name" [(ngModel)]="searchValue" />
+          <button nz-button nzSize="small" nzType="primary" (click)="search()" class="search-button">Search</button>
+          <button nz-button nzSize="small" (click)="reset()">Reset</button>
+        </div>
+      </div>
+    </nz-dropdown-menu>
+
   </nz-table>
