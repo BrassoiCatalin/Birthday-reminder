@@ -1,15 +1,25 @@
-<nz-table #basicTable [nzData]="personList">
+<nz-table #basicTable [nzData]="listOfDisplayPerson">
     <thead>
       <tr>
         <th nzCustomFilter>
           First name
-          <nz-filter-trigger [(nzVisible)]="visible" [nzActive]="searchValue.length > 0" [nzDropdownMenu]="menu">
+          <nz-filter-trigger [(nzVisible)]="isFirstNameFilterVisible" [nzActive]="firstNameSearchValue.length > 0" [nzDropdownMenu]="menuFirstName">
             <span nz-icon nzType="search"></span>
           </nz-filter-trigger>
         </th>
-        <th>Last name</th>
+        <th nzCustomFilter>
+          Last name
+          <nz-filter-trigger [(nzVisible)]="isLastNameFilterVisible" [nzActive]="lastNameSearchValue.length > 0" [nzDropdownMenu]="menuLastName">
+            <span nz-icon nzType="search"></span>
+          </nz-filter-trigger>
+        </th>
         <th>Phone</th>
-        <th>City</th>
+        <th nzCustomFilter>
+          City
+          <nz-filter-trigger [(nzVisible)]="isCityFilterVisible" [nzActive]="citySearchValue.length > 0" [nzDropdownMenu]="menuCity">
+            <span nz-icon nzType="search"></span>
+          </nz-filter-trigger>
+        </th>
         <th>Birth date</th>
       </tr>
     </thead>
@@ -22,14 +32,31 @@
         <td>{{data.birthDate| date:'longDate'}}</td>
       </tr>
     </tbody>
-    <nz-dropdown-menu #menu="nzDropdownMenu">
+    <nz-dropdown-menu #menuFirstName="nzDropdownMenu">
       <div class="ant-table-filter-dropdown">
         <div class="search-box">
-          <input type="text" nz-input placeholder="Search name" [(ngModel)]="searchValue" />
-          <button nz-button nzSize="small" nzType="primary" (click)="search()" class="search-button">Search</button>
-          <button nz-button nzSize="small" (click)="reset()">Reset</button>
+          <input type="text" nz-input placeholder="Search by first name..." [(ngModel)]="firstNameSearchValue" />
+          <button nz-button nzSize="small" nzType="primary" (click)="searchByFirstName()" class="search-button">Search</button>
+          <button nz-button nzSize="small" (click)="resetAll()">Reset all</button>
         </div>
       </div>
     </nz-dropdown-menu>
-
+    <nz-dropdown-menu #menuLastName="nzDropdownMenu">
+      <div class="ant-table-filter-dropdown">
+        <div class="search-box">
+          <input type="text" nz-input placeholder="Search by last name..." [(ngModel)]="lastNameSearchValue" />
+          <button nz-button nzSize="small" nzType="primary" (click)="searchByLastName()" class="search-button">Search</button>
+          <button nz-button nzSize="small" (click)="resetAll()">Reset all</button>
+        </div>
+      </div>
+    </nz-dropdown-menu>
+    <nz-dropdown-menu #menuCity="nzDropdownMenu">
+      <div class="ant-table-filter-dropdown">
+        <div class="search-box">
+          <input type="text" nz-input placeholder="Search by city..." [(ngModel)]="citySearchValue" />
+          <button nz-button nzSize="small" nzType="primary" (click)="searchByCity()" class="search-button">Search</button>
+          <button nz-button nzSize="small" (click)="resetAll()">Reset all</button>
+        </div>
+      </div>
+    </nz-dropdown-menu>
   </nz-table>

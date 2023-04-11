@@ -9,25 +9,44 @@ import { PeopleService } from '../services/people.service';
   styleUrls: ['./birthday-table.component.scss']
 })
 export class BirthdayTableComponent {
-  visible = false;
-  searchValue = '';
+  isFirstNameFilterVisible = false;
+  isLastNameFilterVisible = false;
+  isCityFilterVisible = false;
+
+  firstNameSearchValue = '';
+  lastNameSearchValue = '';
+  citySearchValue = '';
+
   personList: Person[] = [];
+  listOfDisplayPerson = [...this.personList];
 
   constructor(private peopleService: PeopleService){}
 
   ngOnInit(): void{
     this.personList = this.peopleService.people;
+    this.resetAll();
   }
 
-  reset(): void {
-    this.searchValue = '';
-    this.search();
+  resetAll(): void {
+    this.firstNameSearchValue = '';
+    this.lastNameSearchValue = '';
+    this.citySearchValue = '';
+
+    this.searchByFirstName();
   }
 
-  search(): void {
-    this.visible = false;
-    this.personList = this.personList.filter((item: Person) => item.firstName.indexOf(this.searchValue) !== -1);
+  searchByFirstName(): void {
+    this.isFirstNameFilterVisible = false;
+    this.listOfDisplayPerson = this.personList.filter((item: Person) => item.firstName.indexOf(this.firstNameSearchValue) !== -1);
   }
-//foloseste doua liste pentru search
-//pune iconita la search, caci e invizibil
+
+  searchByLastName(): void {
+    this.isLastNameFilterVisible = false;
+    this.listOfDisplayPerson = this.personList.filter((item: Person) => item.lastName.indexOf(this.lastNameSearchValue) !== -1);
+  }
+
+  searchByCity(): void {
+    this.isCityFilterVisible = false;
+    this.listOfDisplayPerson = this.personList.filter((item: Person) => item.city.indexOf(this.citySearchValue) !== -1);
+  }
 }

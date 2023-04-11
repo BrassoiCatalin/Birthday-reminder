@@ -7,6 +7,7 @@ import { NzDividerComponent, NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { FormsModule } from '@angular/forms';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 
 
@@ -20,7 +21,8 @@ import { FormsModule } from '@angular/forms';
     NzDividerModule,
     NzTableModule,
     NzDropDownModule,
-    FormsModule
+    FormsModule,
+    NzIconModule
   ]
 })
 export class HomeModule { }
