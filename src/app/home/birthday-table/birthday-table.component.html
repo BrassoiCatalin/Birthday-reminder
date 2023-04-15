@@ -1,20 +1,23 @@
+<div class="flex-button">
+  <button nz-button nzType="primary" style="margin: 10px;" routerLink="/add">Add a person</button>
+</div>
 <nz-table #basicTable [nzData]="personList">
-    <thead>
-      <tr>
-        <th>First name</th>
-        <th>Last name</th>
-        <th>Phone</th>
-        <th>City</th>
-        <th>Birth date</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let data of basicTable.data">
-        <td>{{data.firstName}}</td>
-        <td>{{data.lastName}}</td>
-        <td>{{data.phoneNumber}}</td>
-        <td>{{data.city}}</td>
-        <td>{{data.birthDate| date:'longDate'}}</td>
-      </tr>
-    </tbody>
-  </nz-table>
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Phone</th>
+      <th>City</th>
+      <th>Birth date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td>{{ data.firstName }}</td>
+      <td>{{ data.lastName }}</td>
+      <td>{{ data.phoneNumber }}</td>
+      <td>{{ data.city }}</td>
+      <td>{{ data.birthDate | date : "dd MMMM yyyy" }}</td>
+    </tr>
+  </tbody>
+</nz-table>
