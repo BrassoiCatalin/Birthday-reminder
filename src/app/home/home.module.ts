@@ -11,7 +11,8 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzIconModule } from 'ng-zorro-antd/icon';
-
+import { FormsModule } from '@angular/forms';
+import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,9 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
     NzFormModule,
     ReactiveFormsModule,
     NzDatePickerModule,
-    NzIconModule
+    NzIconModule,
+    FormsModule,
+    NzPopconfirmModule
   ]
 })
 export class HomeModule { }

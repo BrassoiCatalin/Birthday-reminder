@@ -11,3 +11,12 @@ nz-button-group [nz-button] {
   display: flex;
   justify-content: flex-end;
 }
+
+.save {
+  margin-right: 8px;
+}
+
+.actions{
+  display: flex;
+  justify-content: space-around;
+}

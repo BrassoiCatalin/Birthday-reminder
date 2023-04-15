@@ -1,5 +1,7 @@
 <div class="flex-button">
-  <button nz-button nzType="primary" style="margin: 10px;" routerLink="/add">Add a person</button>
+  <button nz-button nzType="primary" style="margin: 10px" routerLink="/add">
+    Add a person
+  </button>
 </div>
 <nz-table #basicTable [nzData]="personList">
   <thead>
@@ -9,15 +11,69 @@
       <th>Phone</th>
       <th>City</th>
       <th>Birth date</th>
+      <th>Action</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let data of basicTable.data">
-      <td>{{ data.firstName }}</td>
-      <td>{{ data.lastName }}</td>
-      <td>{{ data.phoneNumber }}</td>
-      <td>{{ data.city }}</td>
-      <td>{{ data.birthDate | date : "dd MMMM yyyy" }}</td>
+      <ng-container *ngIf="!editCache[data.id].edit; else editTemplate">
+        <td>{{ data.firstName }}</td>
+        <td>{{ data.lastName }}</td>
+        <td>{{ data.phoneNumber }}</td>
+        <td>{{ data.city }}</td>
+        <td>{{ data.birthDate | date : "dd MMMM yyyy" }}</td>
+        <td class="actions">
+          <a (click)="startEdit(data.id)"
+            ><span nz-icon nzType="edit" nzTheme="outline"></span
+          ></a>
+          <a><span nz-icon nzType="delete" nzTheme="outline"></span></a>
+        </td>
+      </ng-container>
+      <ng-template #editTemplate>
+        <td>
+          <input
+            type="text"
+            nz-input
+            [(ngModel)]="editCache[data.id].data.firstName"
+          />
+        </td>
+        <td>
+          <input
+            type="text"
+            nz-input
+            [(ngModel)]="editCache[data.id].data.lastName"
+          />
+        </td>
+        <td>
+          <input
+            type="text"
+            nz-input
+            [(ngModel)]="editCache[data.id].data.phoneNumber"
+          />
+        </td>
+        <td>
+          <input
+            type="text"
+            nz-input
+            [(ngModel)]="editCache[data.id].data.city"
+          />
+        </td>
+        <!-- <td>{{ data.birthDate | date : "dd MMMM yyyy" }}</td> -->
+        <td>
+          <nz-date-picker
+            [(ngModel)]="editCache[data.id].data.birthDate"
+          ></nz-date-picker>
+        </td>
+        <td>
+          <a (click)="saveEdit(data.id)" class="save">Save</a>
+          <a
+            nz-popconfirm
+            nzPopconfirmTitle="Sure to cancel?"
+            (nzOnConfirm)="cancelEdit(data.id)"
+            >Cancel</a
+          >
+        </td>
+      </ng-template>
     </tr>
   </tbody>
 </nz-table>
