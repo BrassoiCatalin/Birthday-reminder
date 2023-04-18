@@ -5,6 +5,7 @@ import { HomeRoutingModule } from './home-routing.module';
 import { BirthdayTableComponent } from './birthday-table/birthday-table.component';
 import { NzDividerComponent, NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzTableModule } from 'ng-zorro-antd/table';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { AddBirthdayComponent } from './add-birthday/add-birthday.component';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzFormModule } from 'ng-zorro-antd/form';
@@ -24,6 +25,7 @@ import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
     HomeRoutingModule,
     NzDividerModule,
     NzTableModule,
+    NzDropDownModule,
     NzButtonModule,
     NzFormModule,
     ReactiveFormsModule,
