@@ -1,3 +1,19 @@
+<div>
+  <button (click)="sortByFirstNameAscending()">Sort By First Name Ascending</button>
+  <button (click)="sortByFirstNameDescending()">Sort By First Name Descending</button>
+</div>
+<div>
+  <button (click)="sortByLastNameAscending()">Sort By Last Name Ascending</button>
+  <button (click)="sortByLastNameDescending()">Sort By Last Name Descending</button>
+</div>
+<div>
+  <button (click)="sortByPhoneNumberAscending()">Sort By Phone Number Ascending</button>
+  <button (click)="sortByPhoneNumberDescending()">Sort By Phone Number Descending</button>
+</div>
+<div>
+  <button (click)="sortByCityAscending()">Sort By City Ascending</button>
+  <button (click)="sortByCityDescending()">Sort By City Descending</button>
+</div>
 <nz-table #basicTable [nzData]="listOfDisplayPerson">
     <thead>
       <tr>

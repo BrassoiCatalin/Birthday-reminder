@@ -9,6 +9,7 @@ import { PeopleService } from '../services/people.service';
   styleUrls: ['./birthday-table.component.scss']
 })
 export class BirthdayTableComponent {
+
   isFirstNameFilterVisible = false;
   isLastNameFilterVisible = false;
   isCityFilterVisible = false;
@@ -20,7 +21,11 @@ export class BirthdayTableComponent {
   personList: Person[] = [];
   listOfDisplayPerson = [...this.personList];
 
-  constructor(private peopleService: PeopleService){}
+  constructor(private peopleService: PeopleService){
+    this.peopleService.personListSubject.subscribe(res =>{
+      this.listOfDisplayPerson = [...res];
+    })
+  }
 
   ngOnInit(): void{
     this.personList = this.peopleService.people;
@@ -49,4 +54,39 @@ export class BirthdayTableComponent {
     this.isCityFilterVisible = false;
     this.listOfDisplayPerson = this.personList.filter((item: Person) => item.city.indexOf(this.citySearchValue) !== -1);
   }
+
+  sortByFirstNameAscending() {
+    this.peopleService.sortByFirstNameAscending();
+    console.log(this.personList);
+  }
+  sortByFirstNameDescending() {
+    this.peopleService.sortByFirstNameDescending();
+    console.log(this.personList);
+  }
+
+  sortByLastNameAscending() {
+    this.peopleService.sortByLastNameAscending();
+  }
+  sortByLastNameDescending() {
+    this.peopleService.sortByLastNameDescending();
+  }
+
+  sortByPhoneNumberAscending() {
+    this.peopleService.sortByPhoneNumberAscending();
+  }
+  sortByPhoneNumberDescending() {
+    this.peopleService.sortByPhoneNumberDescending();
+  }
+
+  sortByCityAscending() {
+    this.peopleService.sortByCityAscending();
+  }
+  sortByCityDescending() {
+    this.peopleService.sortByCityDescending();
+  }
+
+  sortByBirthDate() {
+    this.peopleService.sortByFirstNameAscending();
+  }
+
 }
