@@ -7,11 +7,6 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class PeopleService {
-  resetAllFilters() {
-    throw new Error('Method not implemented.');
-  }
-
-  //  moviesListSubject: Subject<Movie[]> = new Subject<Movie[]>();
   private personList: Person[] = peopleData;
   personListSubject: Subject<Person[]> = new Subject<Person[]>();
 
