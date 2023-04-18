@@ -6,14 +6,19 @@ import { BirthdayTableComponent } from './birthday-table/birthday-table.componen
 import { NzDividerComponent, NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
-import { FormsModule } from '@angular/forms';
+import { AddBirthdayComponent } from './add-birthday/add-birthday.component';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzIconModule } from 'ng-zorro-antd/icon';
-
-
+import { FormsModule } from '@angular/forms';
+import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 
 @NgModule({
   declarations: [
-    BirthdayTableComponent
+    BirthdayTableComponent,
+    AddBirthdayComponent
   ],
   imports: [
     CommonModule,
@@ -21,8 +26,13 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
     NzDividerModule,
     NzTableModule,
     NzDropDownModule,
+    NzButtonModule,
+    NzFormModule,
+    ReactiveFormsModule,
+    NzDatePickerModule,
+    NzIconModule,
     FormsModule,
-    NzIconModule
+    NzPopconfirmModule
   ]
 })
 export class HomeModule { }

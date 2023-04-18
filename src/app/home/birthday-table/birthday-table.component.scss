@@ -15,3 +15,26 @@
 .search-button {
   margin-right: 8px;
 }
+
+[nz-button] {
+  margin-right: 8px;
+  margin-bottom: 12px;
+}
+
+nz-button-group [nz-button] {
+  margin-right: 0;
+}
+
+.flex-button {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.save {
+  margin-right: 8px;
+}
+
+.actions{
+  display: flex;
+  justify-content: space-around;
+}
