@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "firstName": "Andreea",
     "lastName": "Popescu",
     "phoneNumber": "0721234567",
@@ -8,6 +9,7 @@
     "wishList": ["A new camera", "Books by Stephen King", "A yoga mat"]
   },
   {
+    "id": 2,
     "firstName": "Mihai",
     "lastName": "Ionescu",
     "phoneNumber": "0711223344",
@@ -16,6 +18,7 @@
     "wishList": ["An espresso machine", "A bicycle", "A book on quantum physics"]
   },
   {
+    "id": 3,
     "firstName": "Elena",
     "lastName": "Popa",
     "phoneNumber": "0733221100",
@@ -24,6 +27,7 @@
     "wishList": ["A weekend trip to Paris", "A perfume", "A cooking class"]
   },
   {
+    "id": 4,
     "firstName": "Alexandru",
     "lastName": "Dragomir",
     "phoneNumber": "0752234678",
@@ -32,6 +36,7 @@
     "wishList": ["A new laptop", "A smartwatch", "A hiking trip in the mountains"]
   },
   {
+    "id": 5,
     "firstName": "Ana",
     "lastName": "Munteanu",
     "phoneNumber": "0766223311",
@@ -40,6 +45,7 @@
     "wishList": ["A guitar", "A new smartphone", "A perfume"]
   },
   {
+    "id": 6,
     "firstName": "Dan",
     "lastName": "Constantinescu",
     "phoneNumber": "0743123342",
@@ -48,6 +54,7 @@
     "wishList": ["A weekend at a spa", "A book on mindfulness"]
   },
   {
+    "id": 7,
     "firstName": "Irina",
     "lastName": "Stanescu",
     "phoneNumber": "0761234567",
@@ -56,6 +63,7 @@
     "wishList": ["A pair of high-quality headphones", "A cooking course", "A trip to Japan"]
   },
   {
+    "id": 8,
     "firstName": "Gabriel",
     "lastName": "Dumitrescu",
     "phoneNumber": "0777778888",
@@ -64,6 +72,7 @@
     "wishList": ["A smart home assistant", "A set of woodworking tools", "A winter coat"]
   },
   {
+    "id": 9,
     "firstName": "Cristina",
     "lastName": "Georgescu",
     "phoneNumber": "0731234567",
@@ -72,6 +81,7 @@
     "wishList": ["A digital drawing tablet", "A trip to New York City", "A book on artificial intelligence"]
   },
   {
+    "id": 10,
     "firstName": "Elena",
     "lastName": "Dragomir",
     "phoneNumber": "0731123456",
@@ -80,6 +90,7 @@
     "wishList": ["Yoga mat", "Travel guidebook", "Smartwatch", "Journal"]
   },
   {
+    "id": 11,
     "firstName": "Vlad",
     "lastName": "Vasilescu",
     "phoneNumber": "0723234567",
@@ -88,6 +99,7 @@
     "wishList": ["Ski equipment", "Dinner at a Michelin-starred restaurant", "Chess set", "Whiskey"]
   },
   {
+    "id": 12,
     "firstName": "Andreea",
     "lastName": "Mihalache",
     "phoneNumber": "0712345678",
@@ -96,6 +108,7 @@
     "wishList": ["Hiking boots", "Spanish Language course", "Smart home devices", "Polaroid camera", "Kindle"]
   },
   {
+    "id": 13,
     "firstName": "Adrian",
     "lastName": "Pop",
     "phoneNumber": "0743456789",
@@ -104,6 +117,7 @@
     "wishList": ["Motorcycle gear", "Meat smoker", "Book on survival skills", "Camping equipment", "Binoculars", "Star map"]
   },
   {
+    "id": 14,
     "firstName": "Diana",
     "lastName": "Stănescu",
     "phoneNumber": "0744567890",
@@ -112,6 +126,7 @@
     "wishList": ["Professional camera", "Painting set", "Mountain bike", "Travel voucher", "Solar power bank", "Sustainable fashion items", "Concert tickets"]
   },
   {
+    "id": 15,
     "firstName": "Mihai",
     "lastName": "Munteanu",
     "phoneNumber": "0777678901",
@@ -120,6 +135,7 @@
     "wishList": ["Book on philosophy", "Handmade leather wallet", "Vinyl records", "Puzzle", "Artisanal beer", "Coffee machine", "Exotic spices"]
   },
   {
+    "id": 16,
     "firstName": "Ioana",
     "lastName": "Constantinescu",
     "phoneNumber": "0766789012",
