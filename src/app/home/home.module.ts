@@ -14,25 +14,31 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { FormsModule } from '@angular/forms';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
+import { ReminderModule } from "../reminder/reminder.module";
+import { DatePipe } from '@angular/common';
 
 @NgModule({
-  declarations: [
-    BirthdayTableComponent,
-    AddBirthdayComponent
-  ],
-  imports: [
-    CommonModule,
-    HomeRoutingModule,
-    NzDividerModule,
-    NzTableModule,
-    NzDropDownModule,
-    NzButtonModule,
-    NzFormModule,
-    ReactiveFormsModule,
-    NzDatePickerModule,
-    NzIconModule,
-    FormsModule,
-    NzPopconfirmModule
-  ]
+    declarations: [
+        BirthdayTableComponent,
+        AddBirthdayComponent
+    ],
+    imports: [
+        CommonModule,
+        HomeRoutingModule,
+        NzDividerModule,
+        NzTableModule,
+        NzDropDownModule,
+        NzButtonModule,
+        NzFormModule,
+        ReactiveFormsModule,
+        NzDatePickerModule,
+        NzIconModule,
+        FormsModule,
+        NzPopconfirmModule,
+        ReminderModule,
+    ],
+    providers: [
+      DatePipe
+    ]
 })
 export class HomeModule { }

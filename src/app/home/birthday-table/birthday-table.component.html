@@ -14,6 +14,9 @@
   <button (click)="sortByCityAscending()">Sort By City Ascending</button>
   <button (click)="sortByCityDescending()">Sort By City Descending</button>
 </div>
+<div>
+  <button (click)="sortByBirthDayAscending()">Sort By Birth day Ascending</button>
+</div>
 <div class="flex-button">
   <button nz-button nzType="primary" style="margin: 10px" routerLink="/add">
     Add a person
@@ -135,3 +138,4 @@
     </div>
   </nz-dropdown-menu>
 </nz-table>
+<app-reminder-info [listOfBirthDays]="listOfDisplayPerson"></app-reminder-info>

@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Person } from '../interfaces/person.interface';
 import { PeopleService } from '../services/people.service';
-
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-birthday-table',
@@ -9,6 +9,9 @@ import { PeopleService } from '../services/people.service';
   styleUrls: ['./birthday-table.component.scss']
 })
 export class BirthdayTableComponent {
+
+  currentDate?: string | null;
+  currentDateNoYear?: string;
 
   isFirstNameFilterVisible = false;
   isLastNameFilterVisible = false;
@@ -21,7 +24,7 @@ export class BirthdayTableComponent {
   personList: Person[] = [];
   listOfDisplayPerson = [...this.personList];
 
-  constructor(private peopleService: PeopleService){
+  constructor(private peopleService: PeopleService, private datePipe: DatePipe){
     this.peopleService.personListSubject.subscribe(res =>{
       this.listOfDisplayPerson = [...res];
     })
@@ -86,8 +89,8 @@ export class BirthdayTableComponent {
     this.peopleService.sortByCityDescending();
   }
 
-  sortByBirthDate() {
-    this.peopleService.sortByFirstNameAscending();
+  sortByBirthDayAscending() {
+    this.peopleService.sortByBirthDayAscending();
   }
 
   editCache: { [key: string]: { edit: boolean; data: Person } } = {};
