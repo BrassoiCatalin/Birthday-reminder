@@ -1,0 +1,18 @@
+<button (click)="loadNextBirthday()" [disabled]="isButtonEnabled">Show Next Birth Day!</button>
+<div [hidden]="seeResult">
+  <p>Your next upcoming birthday is: </p>
+  <div class="card">
+    <span>
+      {{resultToShow?.firstName}}
+      {{resultToShow?.lastName}}
+    </span>
+    <span>
+      {{resultToShow?.phoneNumber}}
+      {{resultToShow?.city}}
+    </span>
+    <span>
+      Luna: {{month}}
+      Ziua: {{day}}
+    </span>
+  </div>
+</div>
