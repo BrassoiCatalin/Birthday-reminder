@@ -89,8 +89,8 @@ export class BirthdayTableComponent {
     this.peopleService.sortByCityDescending();
   }
 
-  sortByBirthDayAscending() {
-    this.peopleService.sortByBirthDayAscending();
+  sortByBirthdayAscending() {
+    this.peopleService.sortByBirthdayAscending();
   }
 
   editCache: { [key: string]: { edit: boolean; data: Person } } = {};

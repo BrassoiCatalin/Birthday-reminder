@@ -1,6 +1,7 @@
 import { Person } from './../../home/interfaces/person.interface';
 import { DatePipe } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { cloneDeep } from 'lodash';
 
 @Component({
   selector: 'app-reminder-info',
@@ -10,11 +11,10 @@ import { Component, Input } from '@angular/core';
 export class ReminderInfoComponent {
   currentDate?: string | null;
   currentDateNoYear?: string;
-  @Input() set listOfBirthDays(value: Person[]) {
-    let json = JSON.stringify(value);
-    this.localBirthDays = JSON.parse(json);
+  @Input() set listOfBirthdays(value: Person[]) {
+    this.localBirthdays = cloneDeep(value);
   }
-  localBirthDays!: Person[];
+  localBirthdays!: Person[];
   resultToShow?: Person;
   seeResult: boolean = true;
   isButtonEnabled: boolean = false;
@@ -24,7 +24,7 @@ export class ReminderInfoComponent {
   constructor(private datePipe: DatePipe){
   }
 
-  loadNextBirthDay(): void{
+  loadNextBirthday(): void{
     this.seeResult = false;
     this.isButtonEnabled = true;
 
@@ -32,7 +32,7 @@ export class ReminderInfoComponent {
     this.currentDate = this.datePipe.transform(today, 'yyyy-MM-dd');
     this.currentDateNoYear = this.currentDate?.substring(5)!;
 
-    this.localBirthDays.forEach(element => {
+    this.localBirthdays.forEach(element => {
       element.birthDate = element.birthDate.substring(5);
     });
 
@@ -45,13 +45,13 @@ export class ReminderInfoComponent {
       birthDate: this.currentDateNoYear
     }
 
-    this.localBirthDays.push(dummyPerson);
-    this.localBirthDays.sort((a, b) => a.birthDate > b.birthDate ? 1 : -1);
+    this.localBirthdays.push(dummyPerson);
+    this.localBirthdays.sort((a, b) => a.birthDate > b.birthDate ? 1 : -1);
 
-    for(let index = 0; index < this.localBirthDays.length; index++){
+    for(let index = 0; index < this.localBirthdays.length; index++){
 
-      if(this.localBirthDays[index].birthDate === this.currentDateNoYear){
-        this.resultToShow = this.localBirthDays[index + 1];
+      if(this.localBirthdays[index].birthDate === this.currentDateNoYear){
+        this.resultToShow = this.localBirthdays[index + 1];
         break;
       }
     }

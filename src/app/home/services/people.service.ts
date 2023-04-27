@@ -57,7 +57,7 @@ export class PeopleService {
     this.personListSubject.next(this.personList);
   }
 
-  sortByBirthDayAscending(){
+  sortByBirthdayAscending(){
     this.personList.sort((a, b) => a.birthDate > b.birthDate ? 1 : -1);
     this.personListSubject.next(this.personList);
   }
