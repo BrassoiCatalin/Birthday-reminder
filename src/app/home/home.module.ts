@@ -16,11 +16,13 @@ import { FormsModule } from '@angular/forms';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { ReminderModule } from "../reminder/reminder.module";
 import { DatePipe } from '@angular/common';
+import { SearchPipe } from './pipes/search.pipe';
 
 @NgModule({
     declarations: [
         BirthdayTableComponent,
-        AddBirthdayComponent
+        AddBirthdayComponent,
+        SearchPipe
     ],
     imports: [
         CommonModule,

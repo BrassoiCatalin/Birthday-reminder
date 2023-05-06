@@ -3,6 +3,9 @@
     Add a person
   </button>
 </div>
+<div>
+  <input type="text" placeholder="Search..." [(ngModel)]="searchText">
+</div>
 <nz-table #basicTable [nzData]="listOfDisplayPerson">
   <thead>
     <tr>
@@ -16,7 +19,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let data of basicTable.data">
+    <tr *ngFor="let data of basicTable.data | search: searchText">
       <ng-container *ngIf="!editCache[data.id].edit; else editTemplate">
         <td>{{ data.firstName }}</td>
         <td>{{ data.lastName }}</td>

@@ -58,6 +58,8 @@ export class BirthdayTableComponent {
     }
   ]
 
+  searchText?: ''
+
   constructor(private peopleService: PeopleService, private datePipe: DatePipe){
     this.peopleService.personListSubject.subscribe(res =>{
       this.listOfDisplayPerson = [...res];
