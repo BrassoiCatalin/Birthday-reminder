@@ -80,32 +80,5 @@
       </ng-template>
     </tr>
   </tbody>
-  <nz-dropdown-menu #menuFirstName="nzDropdownMenu">
-    <div class="ant-table-filter-dropdown">
-      <div class="search-box">
-        <input type="text" nz-input placeholder="Search by first name..." [(ngModel)]="firstNameSearchValue" />
-        <button nz-button nzSize="small" nzType="primary" (click)="searchByFirstName()" class="search-button">Search</button>
-        <button nz-button nzSize="small" (click)="resetAll()">Reset all</button>
-      </div>
-    </div>
-  </nz-dropdown-menu>
-  <nz-dropdown-menu #menuLastName="nzDropdownMenu">
-    <div class="ant-table-filter-dropdown">
-      <div class="search-box">
-        <input type="text" nz-input placeholder="Search by last name..." [(ngModel)]="lastNameSearchValue" />
-        <button nz-button nzSize="small" nzType="primary" (click)="searchByLastName()" class="search-button">Search</button>
-        <button nz-button nzSize="small" (click)="resetAll()">Reset all</button>
-      </div>
-    </div>
-  </nz-dropdown-menu>
-  <nz-dropdown-menu #menuCity="nzDropdownMenu">
-    <div class="ant-table-filter-dropdown">
-      <div class="search-box">
-        <input type="text" nz-input placeholder="Search by city..." [(ngModel)]="citySearchValue" />
-        <button nz-button nzSize="small" nzType="primary" (click)="searchByCity()" class="search-button">Search</button>
-        <button nz-button nzSize="small" (click)="resetAll()">Reset all</button>
-      </div>
-    </div>
-  </nz-dropdown-menu>
 </nz-table>
 <app-reminder-info [listOfBirthdays]="listOfDisplayPerson"></app-reminder-info>

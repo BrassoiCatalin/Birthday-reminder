@@ -85,16 +85,6 @@ export class BirthdayTableComponent {
     this.listOfDisplayPerson = this.personList.filter((item: Person) => item.firstName.indexOf(this.firstNameSearchValue) !== -1);
   }
 
-  searchByLastName(): void {
-    this.isLastNameFilterVisible = false;
-    this.listOfDisplayPerson = this.personList.filter((item: Person) => item.lastName.indexOf(this.lastNameSearchValue) !== -1);
-  }
-
-  searchByCity(): void {
-    this.isCityFilterVisible = false;
-    this.listOfDisplayPerson = this.personList.filter((item: Person) => item.city.indexOf(this.citySearchValue) !== -1);
-  }
-
   editCache: { [key: string]: { edit: boolean; data: Person } } = {};
 
   startEdit(id: number): void {
