@@ -17,6 +17,7 @@ import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { ReminderModule } from "../reminder/reminder.module";
 import { DatePipe } from '@angular/common';
 import { SearchPipe } from './pipes/search.pipe';
+import { NzModalModule } from 'ng-zorro-antd/modal';
 
 @NgModule({
     declarations: [
@@ -38,6 +39,7 @@ import { SearchPipe } from './pipes/search.pipe';
         FormsModule,
         NzPopconfirmModule,
         ReminderModule,
+        NzModalModule
     ],
     providers: [
       DatePipe

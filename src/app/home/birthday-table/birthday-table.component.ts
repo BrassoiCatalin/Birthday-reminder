@@ -14,13 +14,11 @@ export class BirthdayTableComponent {
   currentDate?: string | null;
   currentDateNoYear?: string;
 
-  isFirstNameFilterVisible = false;
-  isLastNameFilterVisible = false;
-  isCityFilterVisible = false;
-
+  //lists
   personList: Person[] = [];
   displayPersonList = [...this.personList];
 
+  //sort
   listOfColumns: ColumnItem[] = [
     {
       name: 'First Name',
@@ -53,9 +51,20 @@ export class BirthdayTableComponent {
       sortFn: (a: Person, b: Person) => a.birthDate.localeCompare(b.birthDate),
       sortDirections: ['ascend', 'descend', null],
     },
+    {
+      name: 'Actions',
+      sortOrder: null,
+      sortFn: null,
+      sortDirections: [null, null, null],
+    },
   ];
 
+  //search
   searchValue: String = '';
+
+  //modal
+  modalVisibility = false;
+  showedPerson:Person = {} as Person;
 
   constructor(
     private peopleService: PeopleService,
@@ -107,11 +116,13 @@ export class BirthdayTableComponent {
 
     // filter people based on the search value
     _.forEach(this.personList, (person) => {
-      if (this.wordContains(person.firstName, searchValue) ||
-      this.wordContains(person.lastName, searchValue) ||
-      this.wordContains(person.city, searchValue) ||
-      this.wordContains(person.phoneNumber, searchValue) ||
-      this.wordContains(person.birthDate, searchValue))
+      if (
+        this.wordContains(person.firstName, searchValue) ||
+        this.wordContains(person.lastName, searchValue) ||
+        this.wordContains(person.city, searchValue) ||
+        this.wordContains(person.phoneNumber, searchValue) ||
+        this.wordContains(person.birthDate, searchValue)
+      )
         this.displayPersonList.push(person);
     });
   }
@@ -121,5 +132,28 @@ export class BirthdayTableComponent {
       return true;
     }
     return false;
+  }
+
+  deletePerson(id: number) {
+    _.remove(this.personList, (p) => {
+      return p.id == id;
+    });
+
+    this.displayPersonList = _.cloneDeep(this.personList);
+  }
+
+  showModal(id: number) {
+    this.showedPerson = _.find(this.personList, (p) => {
+      return p.id == id;
+    })!;
+    this.modalVisibility = true;
+  }
+
+  handleOk() {
+    this.modalVisibility = false;
+  }
+
+  handleClose() {
+    this.modalVisibility = false;
   }
 }
