@@ -53,6 +53,12 @@ export class BirthdayTableComponent {
       sortFn: (a: Person, b: Person) => a.birthDate.localeCompare(b.birthDate),
       sortDirections: ['ascend', 'descend', null],
     },
+    {
+      name: 'Actions',
+      sortOrder: null,
+      sortFn: null,
+      sortDirections: [null, null, null],
+    },
   ];
 
   searchValue: String = '';
@@ -107,11 +113,13 @@ export class BirthdayTableComponent {
 
     // filter people based on the search value
     _.forEach(this.personList, (person) => {
-      if (this.wordContains(person.firstName, searchValue) ||
-      this.wordContains(person.lastName, searchValue) ||
-      this.wordContains(person.city, searchValue) ||
-      this.wordContains(person.phoneNumber, searchValue) ||
-      this.wordContains(person.birthDate, searchValue))
+      if (
+        this.wordContains(person.firstName, searchValue) ||
+        this.wordContains(person.lastName, searchValue) ||
+        this.wordContains(person.city, searchValue) ||
+        this.wordContains(person.phoneNumber, searchValue) ||
+        this.wordContains(person.birthDate, searchValue)
+      )
         this.displayPersonList.push(person);
     });
   }
@@ -121,5 +129,13 @@ export class BirthdayTableComponent {
       return true;
     }
     return false;
+  }
+
+  deletePerson(id: number) {
+    _.remove(this.personList, (p) => {
+      return p.id == id;
+    });
+
+    this.displayPersonList = _.cloneDeep(this.personList);
   }
 }

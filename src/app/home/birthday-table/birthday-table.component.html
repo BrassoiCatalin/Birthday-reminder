@@ -4,7 +4,12 @@
   </button>
 </div>
 <div>
-  <input type="text" placeholder="Search..." [(ngModel)]="searchValue" (input)="onInputFilterList()">
+  <input
+    type="text"
+    placeholder="Search..."
+    [(ngModel)]="searchValue"
+    (input)="onInputFilterList()"
+  />
 </div>
 <nz-table #basicTable [nzData]="displayPersonList">
   <thead>
@@ -13,8 +18,9 @@
         *ngFor="let column of listOfColumns"
         [nzSortOrder]="column.sortOrder"
         [nzSortFn]="column.sortFn"
-        [nzSortDirections]="column.sortDirections">
-        {{column.name}}
+        [nzSortDirections]="column.sortDirections"
+      >
+        {{ column.name }}
       </th>
     </tr>
   </thead>
@@ -30,7 +36,9 @@
           <a (click)="startEdit(data.id)"
             ><span nz-icon nzType="edit" nzTheme="outline"></span
           ></a>
-          <a><span nz-icon nzType="delete" nzTheme="outline"></span></a>
+          <a (click)="deletePerson(data.id)"
+            ><span nz-icon nzType="delete" nzTheme="outline"></span
+          ></a>
         </td>
       </ng-container>
       <ng-template #editTemplate>
