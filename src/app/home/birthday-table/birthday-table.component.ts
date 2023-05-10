@@ -102,7 +102,6 @@ export class BirthdayTableComponent {
   }
 
   onInputFilterList() {
-    console.log(this.searchValue);
     this.displayPersonList = [];
     let searchValue = this.searchValue;
 
