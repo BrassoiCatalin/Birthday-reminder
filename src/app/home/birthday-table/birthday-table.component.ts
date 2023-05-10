@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Person } from '../interfaces/person.interface';
 import { PeopleService } from '../services/people.service';
 import { DatePipe } from '@angular/common';
+import { ColumnItem } from '../interfaces/column-item.interface';
 
 @Component({
   selector: 'app-birthday-table',
@@ -23,6 +24,41 @@ export class BirthdayTableComponent {
 
   personList: Person[] = [];
   listOfDisplayPerson = [...this.personList];
+
+  listOfColumns: ColumnItem[] = [
+    {
+      name: "First Name",
+      sortOrder: null,
+      sortFn: (a: Person, b: Person) => a.firstName.localeCompare(b.firstName),
+      sortDirections: ['ascend', 'descend', null]
+    },
+    {
+      name: "Last Name",
+      sortOrder: null,
+      sortFn: (a: Person, b: Person) => a.lastName.localeCompare(b.lastName),
+      sortDirections: ['ascend', 'descend', null]
+    },
+    {
+      name: "Phone",
+      sortOrder: null,
+      sortFn: (a: Person, b: Person) => a.phoneNumber.localeCompare(b.phoneNumber),
+      sortDirections: ['ascend', 'descend', null]
+    },
+    {
+      name: "City",
+      sortOrder: null,
+      sortFn: (a: Person, b: Person) => a.city.localeCompare(b.city),
+      sortDirections: ['ascend', 'descend', null]
+    },
+    {
+      name: "Birthday",
+      sortOrder: null,
+      sortFn: (a: Person, b: Person) => a.birthDate.localeCompare(b.birthDate),
+      sortDirections: ['ascend', 'descend', null]
+    }
+  ]
+
+  searchText?: ''
 
   constructor(private peopleService: PeopleService, private datePipe: DatePipe){
     this.peopleService.personListSubject.subscribe(res =>{
@@ -47,50 +83,6 @@ export class BirthdayTableComponent {
   searchByFirstName(): void {
     this.isFirstNameFilterVisible = false;
     this.listOfDisplayPerson = this.personList.filter((item: Person) => item.firstName.indexOf(this.firstNameSearchValue) !== -1);
-  }
-
-  searchByLastName(): void {
-    this.isLastNameFilterVisible = false;
-    this.listOfDisplayPerson = this.personList.filter((item: Person) => item.lastName.indexOf(this.lastNameSearchValue) !== -1);
-  }
-
-  searchByCity(): void {
-    this.isCityFilterVisible = false;
-    this.listOfDisplayPerson = this.personList.filter((item: Person) => item.city.indexOf(this.citySearchValue) !== -1);
-  }
-
-  sortByFirstNameAscending() {
-    this.peopleService.sortByFirstNameAscending();
-    console.log(this.personList);
-  }
-  sortByFirstNameDescending() {
-    this.peopleService.sortByFirstNameDescending();
-    console.log(this.personList);
-  }
-
-  sortByLastNameAscending() {
-    this.peopleService.sortByLastNameAscending();
-  }
-  sortByLastNameDescending() {
-    this.peopleService.sortByLastNameDescending();
-  }
-
-  sortByPhoneNumberAscending() {
-    this.peopleService.sortByPhoneNumberAscending();
-  }
-  sortByPhoneNumberDescending() {
-    this.peopleService.sortByPhoneNumberDescending();
-  }
-
-  sortByCityAscending() {
-    this.peopleService.sortByCityAscending();
-  }
-  sortByCityDescending() {
-    this.peopleService.sortByCityDescending();
-  }
-
-  sortByBirthdayAscending() {
-    this.peopleService.sortByBirthdayAscending();
   }
 
   editCache: { [key: string]: { edit: boolean; data: Person } } = {};
@@ -121,4 +113,10 @@ export class BirthdayTableComponent {
       };
     });
   }
+
+
+  /** First Name, Last Name, Phone, City, Birthday */
+
+
+
 }
