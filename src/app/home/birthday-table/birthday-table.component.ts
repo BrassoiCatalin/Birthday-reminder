@@ -14,13 +14,11 @@ export class BirthdayTableComponent {
   currentDate?: string | null;
   currentDateNoYear?: string;
 
-  isFirstNameFilterVisible = false;
-  isLastNameFilterVisible = false;
-  isCityFilterVisible = false;
-
+  //lists
   personList: Person[] = [];
   displayPersonList = [...this.personList];
 
+  //sort
   listOfColumns: ColumnItem[] = [
     {
       name: 'First Name',
@@ -61,7 +59,12 @@ export class BirthdayTableComponent {
     },
   ];
 
+  //search
   searchValue: String = '';
+
+  //modal
+  modalVisibility = false;
+  showedPerson:Person = {} as Person;
 
   constructor(
     private peopleService: PeopleService,
@@ -137,5 +140,20 @@ export class BirthdayTableComponent {
     });
 
     this.displayPersonList = _.cloneDeep(this.personList);
+  }
+
+  showModal(id: number) {
+    this.showedPerson = _.find(this.personList, (p) => {
+      return p.id == id;
+    })!;
+    this.modalVisibility = true;
+  }
+
+  handleOk() {
+    this.modalVisibility = false;
+  }
+
+  handleClose() {
+    this.modalVisibility = false;
   }
 }
