@@ -1,62 +1,104 @@
 import { Person } from './../../home/interfaces/person.interface';
 import { DatePipe } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { cloneDeep } from 'lodash';
+import _ from 'lodash';
 
 @Component({
   selector: 'app-reminder-info',
   templateUrl: './reminder-info.component.html',
-  styleUrls: ['./reminder-info.component.scss']
+  styleUrls: ['./reminder-info.component.scss'],
 })
 export class ReminderInfoComponent {
-  currentDate?: string | null;
   currentDateNoYear?: string;
+  modalVisibility = false;
+  errorModalVisibility = false;
+  nextPerson: Person = {} as Person;
   @Input() set listOfBirthdays(value: Person[]) {
-    this.localBirthdays = cloneDeep(value);
+    this.localBirthdays = _.cloneDeep(value);
   }
   localBirthdays!: Person[];
   resultToShow?: Person;
-  seeResult: boolean = true;
-  isButtonEnabled: boolean = false;
-  month?: string;
-  day?: string;
 
-  constructor(private datePipe: DatePipe){
-  }
+  constructor(private datePipe: DatePipe) {}
 
-  loadNextBirthday(): void{
-    this.seeResult = false;
-    this.isButtonEnabled = true;
-
+  loadNextBirthday() {
     let today = new Date();
-    this.currentDate = this.datePipe.transform(today, 'yyyy-MM-dd');
-    this.currentDateNoYear = this.currentDate?.substring(5)!;
+    let currentDate = this.datePipe.transform(today, 'yyyy-MM-dd');
+    let currentYear = currentDate!.substring(0, 4);
 
-    this.localBirthdays.forEach(element => {
-      element.birthDate = element.birthDate.substring(5);
+    const dict: { [id: number]: number } = {};
+
+    let hasPositives = false;
+
+    _.forEach(this.localBirthdays, (b) => {
+      let birthDate = this.datePipe.transform(b.birthDate, 'yyyy-MM-dd');
+
+      birthDate = birthDate!.slice(4);
+
+      birthDate = currentYear + birthDate;
+
+      let diff = new Date(birthDate).valueOf() - new Date().valueOf();
+
+      if (diff >= 0) {
+        hasPositives = true;
+      }
+
+      dict[b.id] = diff;
     });
 
-    let dummyPerson: Person = {
-      id: 0,
-      firstName: "",
-      lastName: "",
-      phoneNumber: "",
-      city: "",
-      birthDate: this.currentDateNoYear
-    }
+    let id: string;
+    let value;
 
-    this.localBirthdays.push(dummyPerson);
-    this.localBirthdays.sort((a, b) => a.birthDate > b.birthDate ? 1 : -1);
-
-    for(let index = 0; index < this.localBirthdays.length; index++){
-
-      if(this.localBirthdays[index].birthDate === this.currentDateNoYear){
-        this.resultToShow = this.localBirthdays[index + 1];
-        break;
+    if (this.localBirthdays.length > 0) {
+      if (hasPositives) {
+        value = new Date().valueOf();
+        for (let key in dict) {
+          if (dict[key] > 0) {
+            if (dict[key] <= value) {
+              id = key;
+              value = dict[key];
+            }
+          }
+        }
+      } else {
+        value = 0;
+        for (let key in dict) {
+          if (dict[key] <= value) {
+            id = key;
+            value = dict[key];
+          }
+        }
       }
-    }
+      const index = this.localBirthdays.findIndex(
+        (item) => item.id == Number(id)
+      );
 
-    this.month = this.resultToShow?.birthDate.substring(0, 2);
-    this.day = this.resultToShow?.birthDate.substring(this.resultToShow?.birthDate.length - 2);
+      this.nextPerson = this.localBirthdays[index];
+    }
+  }
+
+  handleOk() {
+    this.modalVisibility = false;
+  }
+
+  handleClose() {
+    this.modalVisibility = false;
+  }
+
+  handleErrorOk() {
+    this.errorModalVisibility = false;
+  }
+
+  handleErrorClose() {
+    this.errorModalVisibility = false;
+  }
+
+  showModal() {
+    if (this.localBirthdays.length > 0) {
+      this.modalVisibility = true;
+      this.loadNextBirthday();
+    } else {
+      this.errorModalVisibility = true;
+    }
   }
 }

@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { ReminderRoutingModule } from './reminder-routing.module';
 import { ReminderInfoComponent } from './reminder-info/reminder-info.component';
 import { DatePipe } from '@angular/common';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzModalModule } from 'ng-zorro-antd/modal';
 
 @NgModule({
   declarations: [
@@ -11,7 +13,9 @@ import { DatePipe } from '@angular/common';
   ],
   imports: [
     CommonModule,
-    ReminderRoutingModule
+    ReminderRoutingModule,
+    NzButtonModule,
+    NzModalModule
   ],
   exports:[
     ReminderInfoComponent

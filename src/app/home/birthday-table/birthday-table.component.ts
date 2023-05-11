@@ -64,12 +64,9 @@ export class BirthdayTableComponent {
 
   //modal
   modalVisibility = false;
-  showedPerson:Person = {} as Person;
+  showedPerson: Person = {} as Person;
 
-  constructor(
-    private peopleService: PeopleService,
-    private datePipe: DatePipe
-  ) {
+  constructor(private peopleService: PeopleService) {
     this.peopleService.personListSubject.subscribe((res) => {
       this.displayPersonList = [...res];
     });

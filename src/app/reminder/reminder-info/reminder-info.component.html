@@ -1,18 +1,28 @@
-<button (click)="loadNextBirthday()" [disabled]="isButtonEnabled">Show Next Birth Day!</button>
-<div [hidden]="seeResult">
-  <p>Your next upcoming birthday is: </p>
-  <div class="card">
-    <span>
-      {{resultToShow?.firstName}}
-      {{resultToShow?.lastName}}
-    </span>
-    <span>
-      {{resultToShow?.phoneNumber}}
-      {{resultToShow?.city}}
-    </span>
-    <span>
-      Luna: {{month}}
-      Ziua: {{day}}
-    </span>
+<button
+  nz-button
+  nzType="primary"
+  (click)="showModal()"
+>
+  Show Next Birthday!
+</button>
+<nz-modal [(nzVisible)]="modalVisibility" (nzOnCancel)="handleClose()">
+  <div *nzModalContent>
+    <h1>It's {{ nextPerson.firstName }}'s birthday next!</h1>
+    <h1>{{ nextPerson.birthDate }}</h1>
+
+    <p *ngFor="let wish of nextPerson.wishList">
+      {{ wish }}
+    </p>
   </div>
-</div>
+  <div *nzModalFooter>
+    <button nz-button nzType="primary" (click)="handleOk()">Cool!</button>
+  </div>
+</nz-modal>
+<nz-modal [(nzVisible)]="errorModalVisibility" (nzOnCancel)="handleErrorClose()">
+  <div *nzModalContent>
+    <h1>No people left! ;(</h1>
+  </div>
+  <div *nzModalFooter>
+    <button nz-button nzType="primary" (click)="handleErrorOk()">Sad ;(</button>
+  </div>
+</nz-modal>

@@ -1,40 +1,33 @@
-.search-box {
-  padding: 8px;
-}
-
-.search-box input {
-  width: 188px;
-  margin-bottom: 8px;
-  display: block;
-}
-
-.search-box button {
-  width: 90px;
-}
-
-.search-button {
-  margin-right: 8px;
-}
-
-[nz-button] {
-  margin-right: 8px;
-  margin-bottom: 12px;
-}
-
 nz-button-group [nz-button] {
   margin-right: 0;
 }
 
-.flex-button {
+.functions-container {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  button {
+    width: 160px;
+    margin: 10px;
+  }
+  .search-container {
+    width: 160px;
+    height: 32px;
+    margin: 10px;
+    input {
+    }
+  }
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
 }
 
 .save {
   margin-right: 8px;
 }
 
-.actions{
+.actions {
   display: flex;
   justify-content: space-around;
 }
