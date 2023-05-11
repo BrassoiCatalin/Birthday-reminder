@@ -2,18 +2,24 @@
   <img src="assets/KeepLogo.png" alt="Logo" />
 </div>
 <div class="functions-container">
-  <button nz-button nzType="primary" style="margin: 10px" routerLink="/add">
+  <button nz-button nzType="primary" routerLink="/add">
     Add a person
   </button>
 
   <app-reminder-info [listOfBirthdays]="displayPersonList"></app-reminder-info>
 
-  <input
-    type="text"
-    placeholder="Search..."
-    [(ngModel)]="searchValue"
-    (input)="onInputFilterList()"
-  />
+  <nz-input-group [nzSuffix]="suffixIconSearch" class="search-container">
+    <input
+      type="text"
+      nz-input
+      placeholder="Search..."
+      [(ngModel)]="searchValue"
+      (input)="onInputFilterList()"
+    />
+  </nz-input-group>
+  <ng-template #suffixIconSearch>
+    <span nz-icon nzType="search"></span>
+  </ng-template>
 </div>
 <nz-table #basicTable [nzData]="displayPersonList">
   <thead>
